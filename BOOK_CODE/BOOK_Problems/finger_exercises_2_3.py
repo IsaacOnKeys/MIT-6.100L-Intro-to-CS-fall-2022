@@ -21,3 +21,13 @@ def largest_odd_num(x,y,z):
     if largest != float('-inf'):
             return largest
     else: return smallest
+
+def better_implementation(x,y,z):
+    answer = min(x,y,z)
+    if x %2 != 0:
+        answer = x
+    if (y %2 != 0) and y > answer:
+        answer = y
+    if (z %2 != 0) and z > answer:
+        answer = z
+    return answer
