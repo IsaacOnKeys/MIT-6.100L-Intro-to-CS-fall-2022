@@ -1,6 +1,0 @@
-
-{
-  "title":"Lecture 13: Exceptions, Assertions",
-  "content":"Topics: Exceptions, assertions\nView video page Download video Download transcript Lecture Notes Lecture 13: Exceptions, Assertions\nLecture 13 Code\nReadings Ch 9\nFinger Exercise Lecture 13 Implement the function that meets the specifications below:\ndef sum_str_lengths(L): \u0026#34;\u0026#34;\u0026#34; L is a non-empty list containing either: * string elements or * a non-empty sublist of string elements Returns the sum of the length of all strings in L and lengths of strings in the sublists of L. If L contains an element that is not a string or a list, or L\u0026#39;s sublists contain an element that is not a string, raise a ValueError. \u0026#34;\u0026#34;\u0026#34; # Your code here # Examples: print(sum_str_lengths([\u0026#34;abcd\u0026#34;, [\u0026#34;e\u0026#34;, \u0026#34;fg\u0026#34;]])) # prints 7 print(sum_str_lengths([12, [\u0026#34;e\u0026#34;, \u0026#34;fg\u0026#34;]])) # raises ValueError print(sum_str_lengths([\u0026#34;abcd\u0026#34;, [3, \u0026#34;fg\u0026#34;]])) # raises ValueError 6.100L Finger Exercises Lecture 13 Solutions\n"}
-
-
