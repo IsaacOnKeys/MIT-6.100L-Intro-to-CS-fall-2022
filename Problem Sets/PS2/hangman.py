@@ -59,7 +59,10 @@ def has_player_won(secret_word, letters_guessed):
     returns: boolean, True if all the letters of secret_word are in letters_guessed,
         False otherwise
     """
-    return "".join(letters_guessed) == secret_word
+    for c in secret_word:
+        if c not in letters_guessed:
+            return False
+    return True
 
 
 def get_word_progress(secret_word, letters_guessed):
@@ -87,12 +90,37 @@ def get_available_letters(letters_guessed):
       letters have not yet been guessed. The letters should be returned in
       alphabetical order
     """
-    global secret_word
-    available = []
-    for i in secret_word:
-        if i not in letters_guessed and i not in available:
-            available.append(i)
-    available.sort()
+    available = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+    ]
+    for i in letters_guessed:
+        if i in available:
+            available.remove(i)
     return "".join((available))
 
 
@@ -103,12 +131,12 @@ def hangman(secret_word, with_help):
 
     Starts up an interactive game of Hangman.
 
-    ✓ * At the start of the game, let the user know how many
+    * At the start of the game, let the user know how many
       letters the secret_word contains and how many guesses they start with.
 
-    ✓ * The user should start with 10 guesses.
+    * The user should start with 10 guesses.
 
-    ✓ * Before each round, you should display to the user how many guesses
+    * Before each round, you should display to the user how many guesses
       they have left and the letters that the user has not yet guessed.
 
     * Ask the user to supply one guess per round. Remember to make
@@ -135,41 +163,113 @@ def hangman(secret_word, with_help):
 
     Follows the other limitations detailed in the problem write-up.
     """
-    GUESSES = 10
+
     letters_in_secret_word = len(secret_word)
-    letter_pool = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',\
-    'm','n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    VOWELS = ["a", "e", "i", "o", "u"]
+    GUESSES = 10
     letters_guessed = []
+    attempts = 0
+    total_score = 0
+    progress = lambda: get_word_progress(secret_word, letters_guessed)
 
     # Initialize game
-    print(f'\n\
-      Welcome to Hangman!\n\
-      The secret word has {letters_in_secret_word} letters.\n\
-      You have {GUESSES} guesses.\n\
-      Choose one letter at a time.\n\
-      Otherwise, if you need help, type "!"\n'
+    print(
+        f"Welcome to hangman!\n"
+        f"I am thinking of a word that is {letters_in_secret_word} letters long.\n"
+        f"--------------"
     )
-
-
+    # START ENGINElen(se)
     while GUESSES > 0:
-      choice = input(f"You have {GUESSES} guesses remaining. \n\
-        Available letters:\n\
-        {' '.join(letter_pool)} \n\
-        Please choose a letter: ")
-      if len(choice) > 1:
-        print("Please enter one letter at a time")
-      else:
-        # current = letters_guessed.append(choice)
-        # print(current) 
-        # get_word_progress(secret_word, letters_guessed)  
-        GUESSES -= 1
-        print(choice, GUESSES)
-    print("You ran out of Guesses: GAME OVER!")
+        attempts += 1
+        print(
+            f"You have {GUESSES} guesses left.\n"
+            f"Available letters: {get_available_letters(letters_guessed)}"
+        )
+        choice = input(f"Please guess a letter: ").lower()
+        # MULTIPLE LETTER ENTRY HANDLER
+        if len(choice) > 1:
+            print(f"Please enter one letter at a time\n")
+        # REDUNDANT LETTER HANDLER
+        if choice in letters_guessed:
+            print(f"Oops! You've already guessed that letter: {progress()}")
+        # WITH HELP
+        elif choice == "!" and with_help:
+            if GUESSES < 3:
+                print(
+                    f"Sorry, you need at least 3 guesses to use help ('!')\n"
+                    f"{progress()}\n"
+                    f"--------------"
+                )
+            else:
+                available = set(secret_word).difference(set(letters_guessed))
+                available = list(available)
+                new = random.randint(0, len(available) - 1)
+                revealed_letter = available[new]
+                letters_guessed.append(revealed_letter)
+                print(
+                    f"Letter revealed: {revealed_letter}\n"
+                    f"{progress()}\n"
+                    f"--------------"
+                )
+                GUESSES -= 3
+                if has_player_won(secret_word, letters_guessed):
+                    total_score = (GUESSES + (4 * len(set(secret_word)))) + (
+                        3 * len(secret_word)
+                    )
+                    print(
+                        f"Congratulations, you won!\n"
+                        f"Your total score for this game is {total_score}"
+                    )
+                    break
+        # INVALID CHARACTER HANDLER
+        elif (
+            choice not in get_available_letters(letters_guessed)
+            and choice not in secret_word
+        ):
+            print(
+                f"Oops! That is not a valid letter. Please input a letter from the alphabet: {progress()}\n"
+                f"--------------"
+            )
+
+        # VALID CHOICES
+        # CORRECT LETTER
+        else:
+            letters_guessed.append(choice)
+            if choice in secret_word:
+                print(f"Good guess: {progress()}")
+                if has_player_won(secret_word, letters_guessed):
+                    total_score = (GUESSES + (4 * len(set(secret_word)))) + (
+                        3 * len(secret_word)
+                    )
+                    print(
+                        f"--------------\n"
+                        f"Congratulations, you won!\n"
+                        f"Your total score for this game is {total_score}"
+                    )
+                    break
+                else:
+                    print(f"--------------")
+            # INCORRECT LETTER
+            else:
+                print(
+                    f"Oops! That letter is not in my word: {progress()}\n"
+                    f"--------------"
+                )
+                if choice not in VOWELS:
+                    GUESSES -= 1
+                else:
+                    GUESSES -= 2
+
+            if GUESSES <= 0:
+                print(f"Sorry, you ran out of guesses. The word was {secret_word}.")
+                break
+
 
 if __name__ == "__main__":
 
-    secret_word = choose_word(wordlist)
-    with_help = False
+    # secret_word = choose_word(wordlist)
+    secret_word = "wildcard"
+    with_help = True
     hangman(secret_word, with_help)
 
     # After you complete with_help functionality, change with_help to True
