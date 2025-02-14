@@ -19,7 +19,8 @@ print(same_chars("abcd", "cabaa"))  # prints False
 print(same_chars("abcabc", "cabz")) # prints False
 
 """
-Lame MIT Solution:
+# Lame MIT Solution:
+
 def same_chars(s1, s2):
     for i in s1:
         if i not in s2:
