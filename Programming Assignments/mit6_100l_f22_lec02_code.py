@@ -1,6 +1,6 @@
 
 ## TYPE THIS IN THE CONSOLE -- STRINGS ##
-a = 'me'
+"""a = 'me'
 b = "myself"
 c = a + b
 d = a + " " + b
@@ -8,38 +8,39 @@ silly = a * 3
 
 s = "abc"
 len(s) 
-
+"""
 ## TYPE THIS IN THE CONSOLE -- INDEXING ##
-s = "abc"
+"""s = "abc"
 s[0]
 s[1]
-s[2]
+s[2]"""
 #s[3]  # this is an error
-s[-1]
+"""s[-1]
 s[-2]
-s[-3]
+s[-3]"""
 
 ## TYPE THIS IN THE CONSOLE -- SLICING ##
-s = "abcdefgh"
+"""s = "abcdefgh"
 s[3:6]
 s[3:6:2] 
 s[:]
 s[::-1] 
-s[4:1:-2]
+s[4:1:-2]"""
 
 ## TYPE THIS IN THE CONSOLE - MANIPULATION ##
-s = "car"
+"""s = "car"
 #s[0] = 'b'  # this is an error
-s = 'b'+s[1:len(s)] 
+s = 'b'+s[1:len(s)] """
 
 #########################################
 ############### LECTURE ##########################
 #########################################
 
 # ## PRINTING ##
-a = "the"
+"""a = "the"
 b = 3
 c = "musketeers"
+"""
 # print(a, b, c)
 # print(a + b + c)   # this is an error
 # print(a + str(b) + c)
@@ -75,7 +76,9 @@ c = "musketeers"
 #     run run run run run
 
 # your code here
-
+"""verb = input("please enter a verb: ")
+verb = verb + " "
+print(f"I can {verb} better than you\n", verb * 5)"""
 
 
 #########################################
@@ -115,8 +118,10 @@ c = "musketeers"
 # * Prints a bool depending on whether the guess matches the secret.
 
 # your code here
-
-    
+"""secret = 10
+guess = input("guess the secret number: ")
+print(guess == secret)
+    """
 
 #########################################
 
@@ -135,12 +140,12 @@ c = "musketeers"
 
 
 ############## YOU TRY IT ###############
-# # Buggy, fix it!
-# x = int(input("Enter a number for x: "))
-# y = int(input("Enter a different number for y: "))
-# if x == y:
-#     print(x,"is the same as",y)
-# print("These are equal!")
+# Buggy, fix it!
+"""x = int(input("Enter a number for x: "))
+y = int(input("Enter a different number for y: "))
+if x == y:
+    print(x,"is the same as",y)
+else: print("These aren't equal!")"""
 
 #########################################
 
@@ -183,6 +188,15 @@ c = "musketeers"
 # * Prints whether the guess is too low, too high, or the same as the secret. 
 
 # your code here
+"""secret_num = 10
+guess = int(input("Guess the secret number: "))
+
+if guess > secret_num:
+    print("too high")
+elif guess < secret_num:
+    print("too low")
+else:
+    print("You got it!")"""
 
 #############################################
 
@@ -196,35 +210,36 @@ c = "musketeers"
 ############### AT HOME ###################
 #########################################
 # Practice 1: What is the value of s1 and s2?
-s1 = "a" + "b"
-
-d = "hi"
+"""s1 = "a" + "b"
+print(s1)"""
+"""d = "hi"
 e = " ana"
 s2 = d + 2*e
+print(s2)"""
 
 
 # Practice 2: What are the substrings of s?
 s = "ABC d3f ghi"
-s[0:3:1]
-s[0:4]
-s[8:len(s):3]
-s[2::-1]
+s[0:3:1] # "ABC"
+s[0:4] # "ABC "
+s[8:len(s):3] # "g"
+s[2::-1] # "CBA"
 
 
 # Practice 3: What does this print?
 # Note that a += b is the same as a = a + b
-# answer = ''
-# x = 11
-# # try with y = 2 and y = 12
-# y = 2
-# if len(str(x)) == len(str(y)):
-#     if y != 0 and x%2 == 1:
-#         answer = answer + "x / y is " + str(x/y)
-# elif x < y:
-#     answer += "\nx is smaller"  # \n inserts a newline character in the string
-# else:
-#     answer += "\ny is smaller"
-# print(answer)
+"""answer = ''
+x = 11
+# try with y = 2 and y = 12
+y = 12
+if len(str(x)) == len(str(y)):
+    if y != 0 and x%2 == 1:
+        answer = answer + "x / y is " + str(x/y)
+elif x < y:
+    answer += "\nx is smaller"  # \n inserts a newline character in the string
+else:
+    answer += "\ny is smaller"
+print(answer)"""
 
 
 
@@ -234,12 +249,12 @@ s[2::-1]
 # What does it print when a = 3 and b = 3
 # What does it print when a = "1" and b = "1"
 
-# if ( a == int(b) ):
-#     print("int conversion")
-# if ( a == int(b) ) and ( str(a) == b ):
-#     print("int and str conversion")
-# else: 
-#     print("interesting")
+"""if ( a == int(b) ):
+    print("int conversion")
+if ( a == int(b) ) and ( str(a) == b ):
+    print("int and str conversion")
+else: 
+    print("interesting")"""
     
 #########################################
 ############### END AT HOME ##########################
