@@ -21,10 +21,10 @@
 ###########################################
 
 # Fun Lost Forest code, run it on your own!
-#where = input("You are in the Lost Forest\n****************\n****************\n :)\n****************\n****************\nGo left or right? ")
-#while where.lower() == "right":
+# where = input("You are in the Lost Forest\n****************\n****************\n :)\n****************\n****************\nGo left or right? ")
+# while where.lower() == "right":
 #    where = input("You are in the Lost Forest\n****************\n******       ***\n  (╯°□°）╯\n     ︵ \n    ┻━┻\n****************\n****************\nGo left or right? ")
-#print("\nYou got out of the Lost Forest!\n\o/")
+# print("\nYou got out of the Lost Forest!\n\o/")
 
     
 ###########
@@ -51,8 +51,12 @@
 # the while loop more than 2 times. Hint: use a counter
 ###################
 # where = input("Go left or right? ")
+# counter = 0
 # while where == "right":
 #     where = input("Go left or right? ")
+#     counter += 1
+#     if counter == 2:
+#         print(" :( ")
 # print("You got out!")
 
 
@@ -132,12 +136,12 @@
 # Fix this code to use variables start and end in the 
 # range, to get the total sum between and including those values. 
 
-# mysum = 0
-# start = 3
-# end = 5
-# for i in range(start, end):
-#     mysum += i
-# print(mysum)
+"""mysum = 0
+start = 3
+end = 5
+for i in range(start, end + 1):
+    mysum += i
+print(mysum)"""
 
 ###########################################
 
@@ -153,13 +157,23 @@
 # For ex. if x = 15, it prints 5, 10, and 15. 
 # For ex. if x = 14, it prints 5 and 10.
 
+"""x = 20
+for n in range(1, x + 1):
+    if n % 5 == 0:
+        print(n)"""
+
 
 # Practice 2:
 # Declare a variable n that stores an int. Print the sum of all digits 
 # in n. Hint: you can get a digit at a time looking at the remainder 
 # when you divide n by 10.
 # For ex. If x = 1234, print 10
- 
+x = 1234
+total = 0
+for i in str(x):
+    total += int(i)
+print(total)
+
 
 
 
