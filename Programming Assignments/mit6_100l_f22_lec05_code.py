@@ -14,7 +14,7 @@
 # x = 0
 # for i in range(10):
 #     x += 0.1
-# # print(x == 1)
+# print(x == 1)
 
 # print(x, '==', 10*0.1)
 
@@ -84,7 +84,7 @@
 
 ##########
 
-# Add an extra stopping condition 
+# Add an extra stopping condition
 # and check for why the loop terminated
 # x = 54321
 # epsilon = 0.01
@@ -101,15 +101,15 @@
 #     print(f'Last guess squared is {guess*guess}')
 # else:
 #     print(f'{guess} is close to square root of {x}')
-    
+
 #######
 
 
 #################################################
 ######################## AT HOME ##########################
 #################################################
-# 1. If you are incrementing from 0 by 0.022, how many increments 
-# can you do before you get a floating point error? 
+# 1. If you are incrementing from 0 by 0.022, how many increments
+# can you do before you get a floating point error?
 
 # x = 0
 # count = 20     # check different numbers here
@@ -118,12 +118,20 @@
 #     print(x)      # check this value for floating point error
 
 
-# 2. Automate the code from the previous problem. Suppose you are 
+# 2. Automate the code from the previous problem. Suppose you are
 # just given an increment value. Write code that automatically
-# determines how many times you can add increment to itself 
+# determines how many times you can add increment to itself
 # until you start to get a floating point error.
 
 # your code here
+"""x = 0
+counter = 0
+count = 20
+inc_val = 0.022
+while counter * inc_val == x:
+    x += inc_val
+    counter += 1
+    print(f"x = {x}", f"counter = {counter}\nCorrect sum = {counter * inc_val}")"""
 
 #################################################
 #################################################
@@ -133,9 +141,9 @@
 #################################################
 ################ ANSWER TO AT HOME ##########################
 #################################################
-# Automate the code. Suppose you are 
+# Automate the code. Suppose you are
 # just given an increment value. Write code that automatically
-# determines how many times you can add increment to itself 
+# determines how many times you can add increment to itself
 # until you start to get a floating point error.
 
 # n = 0.022
@@ -145,7 +153,7 @@
 #     print(x)
 #     x += n
 #     N += 1
-# note that the x and N increments one extra time 
+# note that the x and N increments one extra time
 # print(f'count is {N-1} where {x-n} != {n*(N-1)}')
 
 #################################################
