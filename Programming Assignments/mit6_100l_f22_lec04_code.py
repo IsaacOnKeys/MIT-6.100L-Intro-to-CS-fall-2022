@@ -8,17 +8,18 @@
 
 
 ################ YOU TRY IT ################
-# Write code that loops a for loop over some range 
+# Write code that loops a for loop over some range
 # and prints how many even numbers are in that range. Try it with:
 # range(5)
 # range(10)
 # range(2,9,3)
 # range(-4,6,2)
 # range(5,6)
-
-#for i in range(5):
+"""nums=0
+for i in range(-4,6,2):
     # your code here
-
+    nums+=1
+print(nums)"""
 
 #############################################
 
@@ -33,7 +34,7 @@
 #         print("There is an i or u")
 
 ######
-      
+
 # s = "demo loops - fruit loops"
 # for char in s:
 #     if char == 'i' or char == 'u':
@@ -68,22 +69,28 @@
 
 
 ############### YOU TRY IT ####################
-# Assume you are given a string of lowercase letters in variable s. 
-# Count how many unique letters there are in s. For example, if 
-# s = "abca" Then your code prints 3. 
+# Assume you are given a string of lowercase letters in variable s.
+# Count how many unique letters there are in s. For example, if
+# s = "abca" Then your code prints 3.
 
 # your code here
-s = 'abca'
+# s = 'abca'
+# s2 =""
+# count = 0
+# for c in s:
+#     if c not in s2:
+#         s2 = s2 + c
+#         count += 1
+
+# print(count)
 
 
 ##############################################
 
 
-
-
 ####################
 ## EXAMPLE: guessing perfect square roots
-#################### 
+####################
 
 # x = int(input("Enter an integer: "))
 # guess = 0
@@ -95,10 +102,9 @@ s = 'abca'
 #     print(f'{x} is not a perfect square')
 
 
-
 ####################
 ## EXAMPLE:  square root with negative flag
-#################### 
+####################
 # guess = 0
 # neg_flag = False
 # x = int(input("Enter a positive integer: "))
@@ -114,28 +120,38 @@ s = 'abca'
 #         print(f'Just checking... did you mean {-x} ?')
 
 
-
 ################ YOU TRY IT ##################
-# Hardcode a number as a secret number. Write a program that 
-# checks through all the numbers between 1 to 10 and prints the 
-# secret value. If it's not found, it doesn't print anything. 
+# Hardcode a number as a secret number. Write a program that
+# checks through all the numbers between 1 to 10 and prints the
+# secret value. If it's not found, it doesn't print anything.
 
 # your code here
-secret = 4
+"""secret = 4
+for n in range(1, 11):
+    if n == secret:
+        print(secret)"""
 
 
 ################################################
 
 
 #################### YOU TRY IT ###################
-# Hardcode a number as a secret number. Write a program that 
-# checks through all the numbers between 1 to 10 and prints the 
-# secret value. If it's not found, prints that it didn't find it. 
+# Hardcode a number as a secret number. Write a program that
+# checks through all the numbers between 1 to 10 and prints the
+# secret value. If it's not found, prints that it didn't find it.
 
-# your code here   
-secret = 4
+# your code here
+"""secret = 13
+high = 11
+low = 1
+count = low
+for n in range(low, high):
+    count += 1
+    if n == secret:
+        print(secret)
 
-    
+if count == high:
+    print("didn't find the number!")"""
 ####################################################
 
 ####################
@@ -149,7 +165,6 @@ secret = 4
 #         print(f'Cube root of {cube} is {guess}')
 
 
-
 # finding perfect cube with negative numbers
 # cube = int(input("Enter an integer: "))
 # for guess in range(abs(cube)+1):
@@ -157,7 +172,6 @@ secret = 4
 #         if cube < 0:
 #             guess = -guess
 #         print(f'Cube root of {str(cube)} is {str(guess)}')
-        
 
 
 ## finding cube root with error message
@@ -175,8 +189,8 @@ secret = 4
 
 ###################
 # EXAMPLE: word problems
-################### 
-    
+###################
+
 # this code is very slow for large numbers!
 # for alyssa in range(11):
 #     for ben in range(11):
@@ -199,10 +213,9 @@ secret = 4
 #         print(f'Cindy sold {cindy} tickets')
 
 
-
 ###################
 # EXAMPLE: floating point
-################### 
+###################
 # x = 0
 # for i in range(10):
 #     x += 0.1
@@ -239,7 +252,6 @@ secret = 4
 #     num = num//2
 # if is_neg:
 #     result = '-' + result
-
 
 
 #############
@@ -281,39 +293,45 @@ secret = 4
 
 #######
 
-#x = 0
-#for i in range(10):
+# x = 0
+# for i in range(10):
 #    x += 0.1
-#print(x == 1)
+# print(x == 1)
 #
-#print(x, '==', 10*0.1)
-
+# print(x, '==', 10*0.1)
 
 
 ####################################################
 ##################### AT HOME ######################
 ######################################################
-# Write code that counts how many unique common characters there are between 
-# two strings. For example below, the common characters count is 8: 
-# text1 = "may the fourth be with you"
-# text2 = "revenge of the sixth"
+# Write code that counts how many unique common characters there are between
+# two strings. For example below, the common characters count is 8:
+"""text1 = "may the fourth be with you"
+text2 = "revenge of the sixth"
 # Hint, start to write your code with a smaller example, then test it on the above text.
 
 # text1 = "abc"
 # text2 = "cde"
+count = 0
 # your code here
+placeholder=""
+for i in text1:
+    if i not in placeholder and i in text2:
+        count += 1
+        placeholder = placeholder + i
+print(count, "\nUnique letters: ", placeholder)"""
+
 
 ####################################################
 ##################### END AT HOME ######################
 ######################################################
 
 
-
 ########################################################
 ############# ANSWERS TO AT HOME #######################
 #######################################################
-# Write code that counts how many unique common characters there are between 
-# two strings. For example below, the common characters count is 8: 
+# Write code that counts how many unique common characters there are between
+# two strings. For example below, the common characters count is 8:
 # text1 = "may the fourth be with you"
 # text2 = "revenge of the sixth"
 # Hint, write your code with a smaller example.
@@ -336,7 +354,7 @@ secret = 4
 ############# ANSWERS TO LECTURE #####################
 ######################################################
 # You Try It 1:
-# Write code that loops a for loop over some range 
+# Write code that loops a for loop over some range
 # and prints how many even numbers are in that range. Try it with:
 # range(5)
 # range(10)
@@ -352,9 +370,9 @@ secret = 4
 
 
 # You Try It 2:
-# Assume you are given a string of lowercase letters in variable s. 
-# Count how many unique letters there are in s. For example, if 
-# s = "abca" Then your code prints 3. 
+# Assume you are given a string of lowercase letters in variable s.
+# Count how many unique letters there are in s. For example, if
+# s = "abca" Then your code prints 3.
 
 # your code here
 # s='abca'
@@ -365,11 +383,10 @@ secret = 4
 # print(len(seen))
 
 
-
 # You Try It 3:
-# Hardcode a number as a secret number. Write a program that 
-# checks through all the numbers between 1 to 10 and prints the 
-# secret value. If it's not found, it doesn't print anything. 
+# Hardcode a number as a secret number. Write a program that
+# checks through all the numbers between 1 to 10 and prints the
+# secret value. If it's not found, it doesn't print anything.
 
 # your code here
 # one way
@@ -385,9 +402,9 @@ secret = 4
 
 
 # You Try It 4:
-# Hardcode a number as a secret number. Write a program that 
-# checks through all the numbers between 1 to 10 and prints the 
-# secret value. If it's not found, prints that it didn't find it. 
+# Hardcode a number as a secret number. Write a program that
+# checks through all the numbers between 1 to 10 and prints the
+# secret value. If it's not found, prints that it didn't find it.
 
 # your code here
 # one way
