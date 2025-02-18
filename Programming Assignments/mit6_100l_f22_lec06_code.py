@@ -33,8 +33,8 @@
 # guess = (high + low)/2
 
 # while abs(guess**2 - x) >= epsilon:
-#     # uncomment to see each step's guess, high, and low 
-#     #print(f'low = {str(low)} high = {str(high)} guess = {str(guess)}')
+#     # uncomment to see each step's guess, high, and low
+#     print(f'low = {str(low)} high = {str(high)} guess = {str(guess)}')
 #     if guess**2 < x:
 #         low = guess
 #     else:
@@ -45,25 +45,23 @@
 # print(f'{str(guess)} is close to square root of {str(x)}')
 
 
-
 ############### YOU TRY IT ###################
-# x = 0.5
-# epsilon = 0.01
-# # choose the low endpoint
-# low = ???
-# # choose the high endpopint
-# high = ???
+""" x = 0.5
+epsilon = 0.01
+# choose the low endpoint
+low = 0
+# choose the high endpopint
+high = 1
+guess = (high + low)/2.0
 
-# guess = (high + low)/2
-
-# while abs(guess**2 - x) >= epsilon:
-#     #print(f'low = {str(low)} high = {str(high)} guess = {str(guess)}')
-#     if guess**2 < x:
-#         low = guess
-#     else:
-#         high = guess
-#     guess = (high + low)/2.0
-# print(f'{str(guess)} is close to square root of {str(x)}')
+while abs(guess**2 - x) >= epsilon:
+    print(f'low = {str(low)} high = {str(high)} guess = {str(guess)}')
+    if guess**2 < x:
+        low = guess
+    else:
+        high = guess
+    guess = (high + low)/2.0
+print(f'{str(guess)} is close to square root of {str(x)}') """
 
 #####################################################
 
@@ -71,36 +69,45 @@
 #####################
 ## Code for square root with all x values
 #####################
-#x = 0.5
-#epsilon = 0.01
-#if x >= 1:
+# x = 0.5
+# epsilon = 0.01
+# if x >= 1:
 #    low = 1.0
 #    high = x
-#else:
+# else:
 #    low = x
 #    high = 1.0
-#guess = (high + low)/2
+# guess = (high + low)/2
 #
-#while abs(guess**2 - x) >= epsilon:
+# while abs(guess**2 - x) >= epsilon:
 #    print(f'low = {str(low)} high {str(high)} guess = {str(guess)}')
 #    if guess**2 < x:
 #        low = guess
 #    else:
 #        high = guess
 #    guess = (high + low)/2.0
-#print(f'{str(guess)} is close to square root of {str(x)}')
+# print(f'{str(guess)} is close to square root of {str(x)}')
 
 
 ################# YOU TRY IT #######################
-# Write code to use bisection search to find the cube 
+# Write code to use bisection search to find the cube
 # root of positive cubes to within some epsilon
 
-cube = 27
-epsilon = 0.01
+"""cube = 8
+epsilon = 0.001
 low = 0
 high = cube
-
+guess = (high + low) / 2
+count = 1
 # your code here
+while abs(guess**3 - cube) >= epsilon:
+    if guess**3 < cube:
+        low = guess
+    else:
+        high = guess
+    guess = (high + low) / 2
+    count += 1
+print(f"Count: {count} Estimate of cube ={guess}")"""
 
 
 #####################################################
@@ -145,7 +152,7 @@ high = cube
 #################################################################
 ################# ANSWERS TO YOU TRY IT #######################
 #################################################################
-# Write code to use bisection search to find the cube 
+# Write code to use bisection search to find the cube
 # root of positive cubes to within some epsilon
 
 # cube = 27
