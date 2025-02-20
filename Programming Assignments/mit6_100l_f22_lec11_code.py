@@ -29,7 +29,8 @@ def remove_all(L, e):
     Mutates L to remove all elements in L that are equal to e
     Returns None.
     """
-    # your code here
+#     while e in L:
+#         L.remove(e)
     
 
 # Lin = [1,2,2,2]
@@ -66,10 +67,10 @@ def remove_all(L, e):
     L is a list
     Mutates L to remove all elements in L that are equal to e
     Returns None.
-    """
-    for elem in L:
-        if elem == e:
-            L.remove(e)
+#     """
+#     for elem in L:
+#         if elem == e:
+#             L.remove(e)
 
 # Lin = [1,2,2,2]
 # remove_all(Lin, 2)
@@ -250,8 +251,13 @@ def repeat(L, n):
     """ L is a list of ints
         n is a positive int
     Mutates L to contain whatever elements L has right now repeated n times. """
-    # your code here 
-    
+#     L_copy = L[:]
+#     for j in range(n -1):
+#         for i in L_copy:
+#             L.append(i)
+#     return L
+
+
 # Lin = [1,2,3]
 # repeat(Lin, 3)
 # print(Lin)    # prints [1, 2, 3, 1, 2, 3, 1, 2, 3]
@@ -262,11 +268,11 @@ def repeat(L, n):
         n is a positive int
     Mutates L to contain whatever elements L has right now repeated n times. """
     # your code here 
-    Lnew = []
-    for i in range(n):
-        for e in L:
-            Lnew.append(e)
-    Lin = Lnew  # hint, even thought we reuse the name Lin here, we make it point to a NEW object!
+#     Lnew = []
+#     for i in range(n):
+#         for e in L:
+#             Lnew.append(e)
+#     Lin = Lnew  # hint, even thought we reuse the name Lin here, we make it point to a NEW object!
     
 # Lin = [1,2,3]
 # repeat(Lin, 3)
