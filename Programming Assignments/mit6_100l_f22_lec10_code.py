@@ -24,28 +24,37 @@
 ############### YOU TRY IT #######################
 # Write a function that meets the specification:
 def make_ordered_list(n):
-    """ n is a positive int
-    Returns a list containing all ints in order 
+    """n is a positive int
+    Returns a list containing all ints in order
     from 0 to n (inclusive)
     """
-    # your code here
+    # newL = []
+    # for num in range(n + 1):
+    #     newL.append(num)
+    # return newL
 
-    
-#print(make_ordered_list(6))  # prints [0, 1, 2, 3, 4, 5, 6]
+
+# print(make_ordered_list(6))  # prints [0, 1, 2, 3, 4, 5, 6]
 
 #####################################################
 
 
 ############ YOU TRY IT ###############
 def remove_elem(L, e):
-    """ 
+    """
     L is a list
     Returns a new list with elements in the same order as L
-    but without any elements equal to e. 
+    but without any elements equal to e.
     """
-    # your code here
 
-  
+
+#     newList = []
+#     for i in L:
+#         if i != e:
+#             newList.append(i)
+#     return newList
+
+
 # L = [1,2,2,2]
 # print(remove_elem(L, 2))    # prints [1]
 # L = [1,2,2,2]
@@ -59,18 +68,18 @@ def remove_elem(L, e):
 #################
 ## EXAMPLE: string-list ops
 #################
-# s = "I<3 cs and u?"		
-# L = list(s) 	
-# L1 = s.split(' ')	
+# s = "I<3 cs and u?"
+# L = list(s)
+# L1 = s.split(' ')
 # L2 = s.split('<')
 # print(L)
 # print(L1)
 # print(L2)
 
 # L = ['a','b','c']
-# A = ''.join(L)	
+# A = ''.join(L)
 # print(A)
-# B = '_'.join(L)	
+# B = '_'.join(L)
 # print(B)
 
 # Lnum = [1, 2, 3]
@@ -79,14 +88,17 @@ def remove_elem(L, e):
 # n = ''.join(Lnum)
 # print(n)
 
+
 ####### YOU TRY IT ###################
 # Write a function that meets this specification
-def count_words(sen):
-    """ sen is a string representing a sentence 
-    Returns how many words are in sen (i.e. a word is a 
-    a sequence of characters between spaces. """
-    # your code here
+# def count_words(sen):
+#     """sen is a string representing a sentence
+#     Returns how many words are in sen (i.e. a word is a
+#     a sequence of characters between spaces."""
 
+
+#     senL = sen.split(" ")
+#     return len(senL)
 
 # s = "Hello it's me"
 # print(count_words(s))   # prints 3
@@ -113,12 +125,14 @@ def count_words(sen):
 
 ############## YOU TRY IT #################
 # Write a function that meets this specification
-def sort_words(sen):
-    """ sen is a string representing a sentence 
-    Returns a list containing all the words in sen but
-    sorted in alphabetical order. """
-    # your code here
+# def sort_words(sen):
+#     """sen is a string representing a sentence
+#     Returns a list containing all the words in sen but
+#     sorted in alphabetical order."""
 
+#     senL = sen.split(" ")
+#     senL.sort()
+#     return senL
 
 # s = "look at this photograph"
 # print(sort_words(s))    # prints ['at', 'look', 'photograph', 'this']
@@ -132,9 +146,10 @@ def sort_words(sen):
 ##############
 ## Loops over lists
 ################
-def square_list(L):
-    for i in range(len(L)): 
-        L[i] = L[i]**2
+# def square_list(L):
+#     for i in range(len(L)):
+#         L[i] = L[i] ** 2
+
 
 # print(square_list([2,3,4]))  # prints None
 
@@ -144,13 +159,12 @@ def square_list(L):
 # print("after fcn call:",Lin)   # mutated L
 
 
-
 ##############
 ## TRICKY EXAMPLE 1: append to L white iterating over range(L)
 ##############
 # L = [1,2,3,4]
 # for i in range(len(L)):
-#     L.append(i) 
+#     L.append(i)
 #     print(L)
 
 
@@ -171,6 +185,7 @@ def square_list(L):
 # L3 = L1 + L2
 # L1.extend([0,6])
 # L2.extend([[0,2],[7,9]])
+# print(L1,L2)
 
 ##############
 ## TRICKY EXAMPLE 3: combining
@@ -204,29 +219,32 @@ def square_list(L):
 #######################################
 ############# ANSWERS TO YOU TRY IT ##########################
 #######################################
-def make_ordered_list(n):
-    """ n is a positive int
-    Returns a list containing all ints in order 
-    from 0 to n (inclusive)
-    """
-    L = []
-    for i in range(n+1):
-        L.append(i)
-    return L
+# def make_ordered_list(n):
+#     """n is a positive int
+#     Returns a list containing all ints in order
+#     from 0 to n (inclusive)
+#     """
+#     L = []
+#     for i in range(n + 1):
+#         L.append(i)
+#     return L
+
 
 # print(make_ordered_list(6))  # prints [0, 1, 2, 3, 4, 5, 6]
 
-def remove_elem(L, e):
-    """ 
-    L is a list
-    Returns a list with elements in the same order as L
-    but without any elements equal to e. 
-    """
-    Lout = []
-    for i in L:
-        if e != i:
-            Lout.append(i)
-    return Lout
+
+# def remove_elem(L, e):
+#     """
+#     L is a list
+#     Returns a list with elements in the same order as L
+#     but without any elements equal to e.
+#     """
+#     Lout = []
+#     for i in L:
+#         if e != i:
+#             Lout.append(i)
+#     return Lout
+
 
 # L = [1,2,2,2]
 # print(remove_elem(L, 1))    # prints [2,2,2]
@@ -235,12 +253,14 @@ def remove_elem(L, e):
 # L = [1,2,2,2]
 # print(remove_elem(L, 0))    # prints [1,2,2,2]
 
-def count_words(s):
-    """ s is a string representing a sentence 
-    Returns how many words are in s (i.e. a word is a 
-    a sequence of characters between spaces. """
-    words = s.split(' ')
-    return len(words)
+
+# def count_words(s):
+#     """s is a string representing a sentence
+#     Returns how many words are in s (i.e. a word is a
+#     a sequence of characters between spaces."""
+#     words = s.split(" ")
+#     return len(words)
+
 
 # s = "Hello it's me"
 # print(count_words(s))   # prints 3
@@ -248,16 +268,18 @@ def count_words(s):
 # s = "I just took a DNA test turns out I'm 100% splitting strings"
 # print(count_words(s))   # prints 12
 
-def sort_words(s):
-    """ s is a string representing a sentence 
-    Returns a list containing all the words in s but
-    sorted in alphabetical order. """
-    words = s.split(' ')
-    # one way
-    return sorted(words)
-    # another way
-    words.sort()
-    return words
+
+# def sort_words(s):
+#     """s is a string representing a sentence
+#     Returns a list containing all the words in s but
+#     sorted in alphabetical order."""
+#     words = s.split(" ")
+#     # one way
+#     return sorted(words)
+#     # another way
+#     words.sort()
+#     return words
+
 
 # s = "look at this photograph"
 # print(sort_words(s))    # prints ['at', 'look', 'photograph', 'this']
@@ -278,6 +300,7 @@ def sort_words(s):
 # L3.sort()
 # del(L3[0])
 # L3.append(['fa', 'la'])
+# print(L3)
 # What's the value of L3 here?
 
 ## Question 2
@@ -288,12 +311,18 @@ def sort_words(s):
 # brunch.extend(L2)
 # What's the value of brunch here?
 
-## Question 3. 
+
+## Question 3.
 def apply_to_each(L, f):
-    """ L is a list of numbers 
+    """L is a list of numbers
         f is a list that takes in a number and returns a number
-    Mutate L such that you apply function f to every element in L """
-    # your code here
+    Mutate L such that you apply function f to every element in L"""
+
+
+#     for i in range(len(L)):
+#         L[i] = f(L[i])
+#     return L
+
 
 # test = [1,-2,3]
 # apply_to_each(test, lambda x: x**2)
@@ -304,17 +333,18 @@ def apply_to_each(L, f):
 # print(test)   # prints [7, 8, 5, 8, 3]
 
 
-
 ########################################
 ########## ANSWERS TO AT HOME ##############################
 ########################################
 
+
 def apply_to_each(L, f):
-    """ L is a list of numbers 
+    """L is a list of numbers
         f is a list that takes in a number and returns a number
-    Mutate L such that you apply function f to every element in L """
-    for i in range(len(L)): 
+    Mutate L such that you apply function f to every element in L"""
+    for i in range(len(L)):
         L[i] = f(L[i])
+
 
 # test = [1,-2,3]
 # apply_to_each(test, lambda x: x**2)
