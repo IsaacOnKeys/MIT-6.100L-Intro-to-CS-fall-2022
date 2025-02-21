@@ -505,41 +505,48 @@ writer
 yellow"""
 
 random.seed(0)
+
+
 def new_word(words):
-    """ words is a multi-line string.
-    Returns a 6 letter word as a str. """
+    """words is a multi-line string.
+    Returns a 6 letter word as a str."""
     words_list = get_word_list(words)
     return random.choice(words_list)
 
+
 ######## ....ASSUME YOU ARE GIVEN CODE UP TO HERE ############
+
 
 ################################################
 ######## THE CODE BELOW IS BUGGY #############
 ################################################
 def get_word_list(words_str):
-    """ words_str is a multi-line string.
-    Returns a list whose elements are lowercase words """
-    return words.split('\n')
+    """words_str is a multi-line string.
+    Returns a list whose elements are lowercase words"""
+    return words.split("\n")
+
 
 def is_a_real_word(s, word_list):
-    """ s is a string
+    """s is a string
         word_list is a list of words
-    Returns True is s is in word_list and False otherwise """
-    return (s in word_list)
+    Returns True is s is in word_list and False otherwise"""
+    return s in word_list
+
 
 def is_correct_len(guess, length):
-    """ guess is a str
+    """guess is a str
         length is an int
-    Returns True if guess has length number of characters. """
-    return (len(guess) == length)
+    Returns True if guess has length number of characters."""
+    return len(guess) == length
+
 
 def make_wordle(guess, secret):
-    """ guess and secret are 6 letter words
+    """guess and secret are 6 letter words
     Returns a result where:
     * a guess' letter in the correct place is capitalized
     * a guess' letter in the secret but not in the correct place is lowercase
-    * a guess' letter not in the secret is not shown 
-    For example: if guess is "struck" and the secret is "strike" 
+    * a guess' letter not in the secret is not shown
+    For example: if guess is "struck" and the secret is "strike"
     then the return is "ST   k"
     """
     result = ""
@@ -551,30 +558,31 @@ def make_wordle(guess, secret):
         elif guess[i] in secret:
             result += guess[i]
         else:
-            result += ' '
+            result += " "
     return result
- 
+
+
 def play_game():
-    """ Plays the game.
+    """Plays the game.
     0) Generates a word_list, a new secret word, and sets up 6 guesses.
     1) Asks the user for a 6 letter word as a guess
     2) Creates a wordle, i.e. the word that the user guessed, but with the
-       following replacements: 
+       following replacements:
        a) guessed letters in the correct position as secret are capitalized
        b) guessed letters in the secret but not in the correct position are lowercase
        c) all other guessed letters are represented as a space
        For example: if guess is "struck" and the secret is "strike" then the
        user is presented with "ST   k".
-    3) The user has 6 guesses to guess the secret word. """
+    3) The user has 6 guesses to guess the secret word."""
     word_list = get_word_list(words)
     secret = new_word
     wordle_len = 6
     n_guesses = 6
     win = False
-    
+
     print(f"You have {n_guesses} to guess a 6-letter word.")
     guess = input("Guess: ")
-    
+
     while guess != secret:
         # if is_a_real_word(guess, word_list) and is_correct_len(guess, wordle_len):
         #     result = make_wordle(guess, secret)
@@ -593,44 +601,46 @@ def play_game():
         else:
             break
     if win:
-        print('YOU WIN')
+        print("YOU WIN")
     else:
-        print('YOU LOSE')
+        print("YOU LOSE")
+
 
 play_game()
-
-
-
 
 
 ################################################
 ######## FIXES TO THE BUGGY CODE #############
 ################################################
 
+
 def get_word_list(words_str):
-    """ words_str is a multi-line string.
-    Returns a list whose elements are lowercase words """
-    return words.split('\n')
+    """words_str is a multi-line string.
+    Returns a list whose elements are lowercase words"""
+    return words.split("\n")
+
 
 def is_a_real_word(s, word_list):
-    """ s is a string
+    """s is a string
         word_list is a list of words
-    Returns True is s is in word_list and False otherwise """
-    return (s in word_list)
+    Returns True is s is in word_list and False otherwise"""
+    return s in word_list
+
 
 def is_correct_len(guess, length):
-    """ guess is a str
+    """guess is a str
         length is an int
-    Returns True if guess has length number of characters. """
-    return (len(guess) == length)
+    Returns True if guess has length number of characters."""
+    return len(guess) == length
+
 
 def make_wordle(guess, secret):
-    """ guess and secret are 6 letter words
+    """guess and secret are 6 letter words
     Returns a result where:
     * a guess' letter in the correct place is capitalized
     * a guess' letter in the secret but not in the correct place is lowercase
-    * a guess' letter not in the secret is not shown 
-    For example: if guess is "struck" and the secret is "strike" 
+    * a guess' letter not in the secret is not shown
+    For example: if guess is "struck" and the secret is "strike"
     then the return is "ST   k"
     """
     result = ""
@@ -642,30 +652,31 @@ def make_wordle(guess, secret):
         elif guess[i] in secret and guess[i] not in guessed:
             result += guess[i]
         else:
-            result += ' '
+            result += " "
     return result
 
+
 def play_game():
-    """ Plays the game.
+    """Plays the game.
     0) Generates a word_list, a new secret word, and sets up 6 guesses.
     1) Asks the user for a 6 letter word as a guess
     2) Creates a wordle, i.e. the word that the user guessed, but with the
-       following replacements: 
+       following replacements:
        a) guessed letters in the correct position as secret are capitalized
        b) guessed letters in the secret but not in the correct position are lowercase
        c) all other guessed letters are represented as a space
        For example: if guess is "struck" and the secret is "strike" then the
        user is presented with "ST   k".
-    3) The user has 6 guesses to guess the secret word. """
+    3) The user has 6 guesses to guess the secret word."""
     word_list = get_word_list(words)
     secret = new_word(words)
     wordle_len = 6
     n_guesses = 6
     win = False
-    
+
     print(f"You have {n_guesses} to guess a 6-letter word.")
     guess = input("Guess: ")
-    
+
     while guess != secret:
         # if is_a_real_word(guess, word_list) and is_correct_len(guess, wordle_len):
         #     result = make_wordle(guess, secret)
@@ -684,13 +695,10 @@ def play_game():
             break
         else:
             break
-    if win or guess==secret:
-        print('YOU WIN')
+    if win or guess == secret:
+        print("YOU WIN")
     else:
-        print('YOU LOSE')
-    
+        print("YOU LOSE")
+
+
 # play_game()
-
-
-
-
