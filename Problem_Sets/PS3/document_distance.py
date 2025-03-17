@@ -21,15 +21,12 @@ def load_file(filename):
         string, contains file contents
     """
     # print("Loading file %s" % filename)
-    inFile = open(filename, "r")
+    inFile = open(filename, 'r')
     line = inFile.read().strip()
     for char in string.punctuation:
         line = line.replace(char, "")
     inFile.close()
     return line.lower()
-
-
-text = load_file(f"Problem_Sets/tests/student_tests/hello_friends.txt")
 
 
 ### Problem 0: Prep Data ###
@@ -41,10 +38,12 @@ def text_to_list(input_text):
     Returns:
         list representation of input_text, where each word is a different element in the list
     """
-    # text_list = input_text.split(" ")
-    # return text_list
-    pass
+    listify = load_file(input_text)
 
+    return listify.split(" ")
+
+answer =  text_to_list("Problem_Sets/PS3/tests/student_tests/hello_friends.txt")
+print(answer)
 
 ### Problem 1: Get Frequency ###
 def get_frequencies(input_iterable):
@@ -55,7 +54,7 @@ def get_frequencies(input_iterable):
         dictionary that maps string:int where each string
         is a letter or word in input_iterable and the corresponding int
         is the frequency of the letter or word in input_iterable
-    Note:
+    Note: 
         You can assume that the only kinds of white space in the text documents we provide will be new lines or space(s) between words (i.e. there are no tabs)
     """
     pass
@@ -140,7 +139,6 @@ def get_tf(file_path):
     """
     pass
 
-
 def get_idf(file_paths):
     """
     Args:
@@ -155,20 +153,19 @@ def get_idf(file_paths):
     """
     pass
 
-
 def get_tfidf(tf_file_path, idf_file_paths):
     """
-    Args:
-        tf_file_path: name of file in the form of a string (used to calculate TF)
-        idf_file_paths: list of names of files, where each file name is a string
-        (used to calculate IDF)
-    Returns:
-       a sorted list of tuples (in increasing TF-IDF score), where each tuple is
-       of the form (word, TF-IDF). In case of words with the same TF-IDF, the
-       words should be sorted in increasing alphabetical order.
+        Args:
+            tf_file_path: name of file in the form of a string (used to calculate TF)
+            idf_file_paths: list of names of files, where each file name is a string
+            (used to calculate IDF)
+        Returns:
+           a sorted list of tuples (in increasing TF-IDF score), where each tuple is
+           of the form (word, TF-IDF). In case of words with the same TF-IDF, the
+           words should be sorted in increasing alphabetical order.
 
-    * TF-IDF(i) = TF(i) * IDF(i)
-    """
+        * TF-IDF(i) = TF(i) * IDF(i)
+        """
     pass
 
 
@@ -178,14 +175,12 @@ if __name__ == "__main__":
     ## Uncomment the following lines to test your implementation ##
     ###############################################################
 
-    # Tests Problem 0: Prep Data
+    ## Tests Problem 0: Prep Data
     # test_directory = "tests/student_tests/"
-    # hello_world, hello_friend = load_file(
-    #     test_directory + "hello_world.txt"
-    # ), load_file(test_directory + "hello_friends.txt")
+    # hello_world, hello_friend = load_file(test_directory + 'hello_world.txt'), load_file(test_directory + 'hello_friends.txt')
     # world, friend = text_to_list(hello_world), text_to_list(hello_friend)
-    # print(world)  # should print ['hello', 'world', 'hello']
-    # print(friend)  # should print ['hello', 'friends']
+    # print(world)      # should print ['hello', 'world', 'hello']
+    # print(friend)     # should print ['hello', 'friends']
 
     ## Tests Problem 1: Get Frequencies
     # test_directory = "tests/student_tests/"
