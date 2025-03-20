@@ -77,7 +77,13 @@ def get_letter_frequencies(word):
         is a letter in word and the corresponding int
         is the frequency of the letter in word
     """
-    pass
+    hash_dict = {}  # word : count
+    for c in word:
+        if c in hash_dict:
+            hash_dict[c] += 1
+        else:
+            hash_dict[c] = 1
+    return hash_dict
 
 
 ### Problem 3: Similarity ###
@@ -105,7 +111,7 @@ def calculate_similarity_score(freq_dict1, freq_dict2):
          all frequencies in both dict1 and dict2.
         Return 1-(DIFF/ALL) rounded to 2 decimal places
     """
-    pass
+    # dict_1, dict_2 = get_frequencies(freq_dict1), get_frequencies(freq_dict2)
 
 
 ### Problem 4: Most Frequent Word(s) ###
@@ -202,11 +208,11 @@ if __name__ == "__main__":
     # print(world_word_freq)  # should print {'hello': 2, 'world': 1}
     # print(friend_word_freq)  # should print {'hello': 1, 'friends': 1}
 
-    ## Tests Problem 2: Get Letter Frequencies
-    # freq1 = get_letter_frequencies('hello')
-    # freq2 = get_letter_frequencies('that')
-    # print(freq1)      #  should print {'h': 1, 'e': 1, 'l': 2, 'o': 1}
-    # print(freq2)      #  should print {'t': 2, 'h': 1, 'a': 1}
+    # Tests Problem 2: Get Letter Frequencies
+    freq1 = get_letter_frequencies('hello')
+    freq2 = get_letter_frequencies('that')
+    print(freq1)      #  should print {'h': 1, 'e': 1, 'l': 2, 'o': 1}
+    print(freq2)      #  should print {'t': 2, 'h': 1, 'a': 1}
 
     ## Tests Problem 3: Similarity
     # test_directory = "tests/student_tests/"
