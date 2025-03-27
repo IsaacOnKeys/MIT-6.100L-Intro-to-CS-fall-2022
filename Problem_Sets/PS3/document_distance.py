@@ -234,7 +234,14 @@ def get_tfidf(tf_file_path, idf_file_paths):
 
     * TF-IDF(i) = TF(i) * IDF(i)
     """
-    pass
+    tfidf = []
+    tf = get_tf(tf_file_path)
+    idf = get_idf(idf_file_paths)
+    for key, value in tf.items():
+        tfidf_calc = tf[key] * idf[key]
+        word_tuple = (key, tfidf_calc)
+        tfidf.append(word_tuple)
+    return tfidf
 
 
 if __name__ == "__main__":
@@ -293,16 +300,14 @@ if __name__ == "__main__":
     # print(most_frequent)  # should print ["hello", "world"]
 
     # Tests Problem 5: Find TF-IDF
-    # tf_text_file = "tests/student_tests/hello_world.txt"
+    tf_text_file = "tests/student_tests/hello_world.txt"
     idf_text_files = [
         "tests/student_tests/hello_world.txt",
         "tests/student_tests/hello_friends.txt",
     ]
-    # tf = get_tf(tf_text_file)
+    tf = get_tf(tf_text_file)
     idf = get_idf(idf_text_files)
-    # tf_idf = get_tfidf(tf_text_file, idf_text_files)
-    # print(tf)  # should print {'hello': 0.6666666666666666, 'world': 0.3333333333333333}
-    print(
-        idf
-    )  # should print {'hello': 0.0, 'world': 0.3010299956639812, 'friends': 0.3010299956639812}
-    # print(tf_idf)  # should print [('hello', 0.0), ('world', 0.10034333188799373)]
+    tf_idf = get_tfidf(tf_text_file, idf_text_files)
+    print(tf)  # should print {'hello': 0.6666666666666666, 'world': 0.3333333333333333}
+    print(idf)  # should print {'hello': 0.0, 'world': 0.3010299956639812, 'friends': 0.3010299956639812}
+    print(tf_idf)  # should print [('hello', 0.0), ('world', 0.10034333188799373)]
