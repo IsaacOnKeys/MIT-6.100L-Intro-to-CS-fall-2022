@@ -65,6 +65,6 @@ def gcd(a, b):
 
 
 # testing
-print(gcd(5, 4))  # 1
-print(gcd(15, 12))  # 3
-print(gcd(12, 12))  # 12
+# print(gcd(5, 4))  # 1
+# print(gcd(15, 12))  # 3
+# print(gcd(12, 12))  # 12
