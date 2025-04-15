@@ -1,6 +1,8 @@
 import unittest
-from tree import Node
+
 import ps4a as student
+from tree import Node
+
 
 # A class that inherits from unittest.TestCase, where each function
 # is a test you want to run on the student's code. For a full description
