@@ -1,12 +1,13 @@
 import os
+import random
 import string
 import sys
 import unittest
-import random
 from contextlib import redirect_stdout
 
 import ps4b as student
 import ps4c as studentc
+
 
 # A class that inherits from unittest.TestCase, where each function
 # is a test you want to run on the student's code. For a full description
