@@ -135,6 +135,7 @@ class SwimWorkout(Workout):
         retstr += f"| {duration_str}{' '*(width-len(duration_str)-1)}|\n"
         cal_str = f"{round(self.get_calories(),1)}"
         retstr += f"| {cal_str} Calories {' '*(width-len(cal_str)-11)}|\n"
+       
         numlaps_str = f"{self.numlaps}"
         retstr += f"| {numlaps_str} Num Laps {' '*(width-len(numlaps_str)-11)}|\n"
         
@@ -176,8 +177,5 @@ print(rw3.get_average_laptime())
 
 # 4) Display workout summary
 rw3.end_swim_workout()
-    
-    
-        
 
 
