@@ -33,8 +33,7 @@ class Message(object):
 
         Returns: (string) the message text
         """
-        text = str(self.message_text)
-        return text
+        return self.message_text
 
     def shift_char(self, char, shift):
         """
@@ -51,7 +50,12 @@ class Message(object):
             raise ValueError("Character must be a single ASCII char in range [32, 126]")
 
         char_num = ord(char)
-        shifted = ((char_num - 32 + shift) % 95) + 32
+        shifted = char_num + shift
+        if 32 <= shifted <= 126:
+            return chr(shifted)
+
+        else:
+            shifted = ((char_num - 32 + shift) % 95) + 32
 
         return chr(shifted)
 
@@ -66,13 +70,10 @@ class Message(object):
 
         Returns: (string) The ciphertext produced using the one time pad
         """
-        padCounter = 0
-        message = self.message_text
-        otp = ""
-        for i in message:
-            otp += self.shift_char(i, pad[padCounter])
-            padCounter += 1
-        return otp
+        ciphertext = ""
+        for i in range(len(pad)):
+            ciphertext += self.shift_char(self.message_text[i], pad[i])
+        return ciphertext
 
 
 class PlaintextMessage(Message):

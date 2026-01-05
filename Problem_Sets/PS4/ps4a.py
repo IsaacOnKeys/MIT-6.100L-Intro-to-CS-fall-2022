@@ -13,7 +13,6 @@ tree3 = Node(
     5, Node(3, Node(2), Node(4)), Node(14, Node(12), Node(21, Node(20), Node(26)))
 )
 
-
 def find_tree_height(tree):
     """
     Find the height of the given tree
@@ -28,18 +27,18 @@ def find_tree_height(tree):
         return max(find_tree_height(tree.left), find_tree_height(tree.right)) + 1
 
 
-# # max heap comparator
-# def max_heap(child_value, parent_value):
-#     if child_value < parent_value:
-#         return True
-#     return False
+# max heap comparator
+def max_heap(child_value, parent_value):
+    if child_value < parent_value:
+        return True
+    return False
 
 
-# # min heap comparator
-# def min_heap(child_value, parent_value):
-#     if child_value > parent_value:
-#         return True
-#     return False
+# min heap comparator
+def min_heap(child_value, parent_value):
+    if child_value > parent_value:
+        return True
+    return False
 
 
 def is_heap(tree, compare_func):
@@ -62,7 +61,7 @@ def is_heap(tree, compare_func):
     return is_heap(tree.left, compare_func) and is_heap(tree.right, compare_func)
 
 
-# answer = is_heap(tree1, min_heap)
+# answer = is_heap(tree1, max_heap)
 # print(answer)
 
 if __name__ == "__main__":
