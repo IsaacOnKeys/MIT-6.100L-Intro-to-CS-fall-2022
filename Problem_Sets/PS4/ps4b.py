@@ -120,7 +120,7 @@ class PlaintextMessage(Message):
         """
         pad = []
         for _ in self.message_text:
-            random_number = random.randint(0, 110)
+            random_number = random.randint(0, 109)
             pad.append(random_number)
         return pad
 
@@ -188,4 +188,4 @@ class EncryptedMessage(Message):
         reversed_pad = [-num for num in pad]
         decrypted_message = self.apply_pad(reversed_pad)
 
-        return PlaintextMessage(decrypted_message, pad)
+        return PlaintextMessage(decrypted_message, pad) 
