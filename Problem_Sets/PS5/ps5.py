@@ -76,7 +76,7 @@ def img_to_pix(filename):
     return pix
 
 
-# print(img_to_pix("Problem_Sets/PS5/image_15.png"))
+# print(img_to_pix("Problem_Sets/PS5/hidden1.bmp"))
 
 
 def pix_to_img(pixels_list, size, mode):
@@ -95,7 +95,6 @@ def pix_to_img(pixels_list, size, mode):
     returns:
         img: Image object made from list of pixels
     """
-    pass
     if mode not in ("RGB", "L"):
         raise ValueError("mode must be 'RGB' or 'L'")
     img = Image.new(mode, size)
@@ -104,8 +103,8 @@ def pix_to_img(pixels_list, size, mode):
 
 
 # img = img_to_pix("Problem_Sets/PS5/image_15.png")
-# size= size = Image.open("Problem_Sets/PS5/image_15.png").size
-# img_out = pix_to_img(img,size,'RGB')
+# size = size = Image.open("Problem_Sets/PS5/image_15.png").size
+# img_out = pix_to_img(img, size, "RGB")
 # img_out.show()
 
 
@@ -129,27 +128,20 @@ def filter(pixels_list, color):
         rgb_vec = [r, g, b]
         new_rgb = matrix_multiply(m, rgb_vec)
         out_pixels.append(tuple(max(0, min(255, int(round(v)))) for v in new_rgb))
-    print(out_pixels)
     return out_pixels
 
 
-path = "Problem_Sets/PS5/image_15.png"
+# path = "Problem_Sets/PS5/image_15.png"
 
-orig = Image.open(path).convert("RGB")
-pixels = list(orig.getdata())
-size = orig.size
+# img_in = Image.open(path).convert("RGB")
+# pixels = list(img_in.getdata())
+# size = img_in.size
 
-red_pixels = filter(pixels, "red")
-red = pix_to_img(red_pixels, size, "RGB")
+# pixels_filtered = filter(pixels, "red") 
+# img_out = pix_to_img(pixels_filtered, size, "RGB")
 
-# side-by-side collage
-w, h = orig.size
-card = Image.new("RGB", (w * 2, h))
-card.paste(orig, (0, 0))
-card.paste(red, (w, 0))
-
-card.show()
-
+# img_out.save("Problem_Sets/PS5/filtered image_15.png")
+# img_out.show()
 
 def extract_end_bits(num_end_bits, pixel):
     """
@@ -181,7 +173,13 @@ def extract_end_bits(num_end_bits, pixel):
     Returns:
         The num_end_bits of pixel, as an integer (BW) or tuple of integers (RGB).
     """
-    pass
+    # Get x number of LSBs from number n: n % 2**x
+
+    return pixel % (2**num_end_bits)
+
+
+# assert extract_end_bits(3,13) == 5
+# print("passed")
 
 
 def reveal_bw_image(filename):
@@ -192,7 +190,20 @@ def reveal_bw_image(filename):
     Returns:
         result: an Image object containing the hidden image
     """
-    pass
+    pixel_list = img_to_pix(filename)
+    hidden_pixels = []
+    for pixel in pixel_list:
+        hidden = extract_end_bits(1, pixel)
+        hidden_pixels.append(hidden * 255)
+    img = Image.open(filename)
+    size = img.size
+    hidden_image = pix_to_img(hidden_pixels, size, "L")
+    return hidden_image
+
+
+# bw_image = reveal_bw_image("Problem_Sets/PS5/hidden1.bmp")
+# bw_image.save("Problem_Sets/PS5/unhidden_hidden1.bmp")
+# bw_image.show()
 
 
 def reveal_color_image(filename):
@@ -203,7 +214,24 @@ def reveal_color_image(filename):
     Returns:
         result: an Image object containing the hidden image
     """
-    pass
+
+    pixel_list = img_to_pix(filename)
+    hidden_pixels = []
+    scale = 255 // 7
+    for r, g, b in pixel_list:
+        red = extract_end_bits(3, r) * scale
+        green = extract_end_bits(3, g) * scale
+        blue = extract_end_bits(3, b) * scale
+        hidden_pixels.append((red, green, blue))
+    img = Image.open(filename)
+    size = img.size
+    hidden_image = pix_to_img(hidden_pixels, size, "RGB")
+    return hidden_image
+
+
+# RGB_image = reveal_color_image("Problem_Sets/PS5/hidden2.bmp")
+# RGB_image.save("Problem_Sets/PS5/unhidden_hidden2.bmp")
+# RGB_image.show()
 
 
 def reveal_image(filename):
@@ -247,26 +275,25 @@ def draw_kerb(filename, kerb):
 
 def main():
     pass
-
     # Uncomment the following lines to test part 1
 
-    # im = Image.open('image_15.png')
+    # im = Image.open("Problem_Sets/PS5/image_15.png")
     # width, height = im.size
-    # pixels = img_to_pix('image_15.png')
+    # pixels = img_to_pix("Problem_Sets/PS5/image_15.png")
 
-    # non_filtered_pixels = filter(pixels,'none')
-    # im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
+    # non_filtered_pixels = filter(pixels, "none")
+    # im = pix_to_img(non_filtered_pixels, (width, height), "RGB")
     # im.show()
 
-    # red_filtered_pixels = filter(pixels,'red')
-    # im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
+    # red_filtered_pixels = filter(pixels, "red")
+    # im2 = pix_to_img(red_filtered_pixels, (width, height), "RGB")
     # im2.show()
 
     # Uncomment the following lines to test part 2
-    # im = reveal_image('hidden1.bmp')
+    # im = reveal_image('Problem_Sets/PS5/hidden1.bmp')
     # im.show()
 
-    # im2 = reveal_image('hidden2.bmp')
+    # im2 = reveal_image("Problem_Sets/PS5/hidden2.bmp")
     # im2.show()
 
 
