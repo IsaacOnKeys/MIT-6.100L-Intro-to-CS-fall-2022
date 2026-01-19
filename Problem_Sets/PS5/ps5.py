@@ -4,8 +4,8 @@
 # Collaborators:
 """
 
-from PIL import Image, ImageFont, ImageDraw
 import numpy
+from PIL import Image, ImageDraw, ImageFont
 
 
 def make_matrix(color):
@@ -19,14 +19,14 @@ def make_matrix(color):
                 deficiency in that color
     """
     # You do not need to understand exactly how this function works.
-    if color == 'red':
-        c = [[.567, .433, 0], [.558, .442, 0], [0, .242, .758]]
-    elif color == 'green':
+    if color == "red":
+        c = [[0.567, 0.433, 0], [0.558, 0.442, 0], [0, 0.242, 0.758]]
+    elif color == "green":
         c = [[0.625, 0.375, 0], [0.7, 0.3, 0], [0, 0.142, 0.858]]
-    elif color == 'blue':
-        c = [[.95, 0.05, 0], [0, 0.433, 0.567], [0, 0.475, .525]]
-    elif color == 'none':
-        c = [[1, 0., 0], [0, 1, 0.], [0, 0., 1]]
+    elif color == "blue":
+        c = [[0.95, 0.05, 0], [0, 0.433, 0.567], [0, 0.475, 0.525]]
+    elif color == "none":
+        c = [[1, 0.0, 0], [0, 1, 0.0], [0, 0.0, 1]]
     return c
 
 
@@ -58,18 +58,25 @@ def img_to_pix(filename):
     For BW images, each pixel is an integer.
 
     # Note: Don't worry about determining if an image is RGB or BW.
-            The PIL library functions you use will return the 
+            The PIL library functions you use will return the
             correct pixel values for either image mode.
 
     Returns the list of pixels.
 
     Inputs:
         filename: string representing an image file, such as 'lenna.jpg'
-        returns: list of pixel values 
+        returns: list of pixel values
                  in form (R,G,B) such as [(0,0,0),(255,255,255),(38,29,58)...] for RGB image
                  in form L such as [60,66,72...] for BW image
     """
-    pass
+
+    img = Image.open(filename)
+    pix = list(img.getdata())
+
+    return pix
+
+
+# print(img_to_pix("Problem_Sets/PS5/image_15.png"))
 
 
 def pix_to_img(pixels_list, size, mode):
@@ -83,24 +90,65 @@ def pix_to_img(pixels_list, size, mode):
               the dimensions of the desired image. Assume
               that size is a valid input such that
               size[0] * size[1] == len(pixels).
-        mode: 'RGB' or 'L' to indicate an RGB image or a 
+        mode: 'RGB' or 'L' to indicate an RGB image or a
               BW image, respectively
     returns:
         img: Image object made from list of pixels
     """
     pass
+    if mode not in ("RGB", "L"):
+        raise ValueError("mode must be 'RGB' or 'L'")
+    img = Image.new(mode, size)
+    img.putdata(pixels_list)
+    return img
+
+
+# img = img_to_pix("Problem_Sets/PS5/image_15.png")
+# size= size = Image.open("Problem_Sets/PS5/image_15.png").size
+# img_out = pix_to_img(img,size,'RGB')
+# img_out.show()
 
 
 def filter(pixels_list, color):
     """
     pixels_list: a list of pixels in RGB form, such as
             [(0,0,0),(255,255,255),(38,29,58)...]
-    color: 'red', 'blue', 'green', or 'none', must be a string representing 
+    color: 'red', 'blue', 'green', or 'none', must be a string representing
            the color deficiency that is being simulated.
     returns: list of pixels in same format as earlier functions,
     transformed by matrix multiplication
     """
-    pass
+
+    if color not in ("red", "green", "blue", "none"):
+        raise ValueError("color must be 'red', 'green', 'blue', or 'none'")
+
+    m = make_matrix(color)
+    out_pixels = []
+
+    for r, g, b in pixels_list:
+        rgb_vec = [r, g, b]
+        new_rgb = matrix_multiply(m, rgb_vec)
+        out_pixels.append(tuple(max(0, min(255, int(round(v)))) for v in new_rgb))
+    print(out_pixels)
+    return out_pixels
+
+
+path = "Problem_Sets/PS5/image_15.png"
+
+orig = Image.open(path).convert("RGB")
+pixels = list(orig.getdata())
+size = orig.size
+
+red_pixels = filter(pixels, "red")
+red = pix_to_img(red_pixels, size, "RGB")
+
+# side-by-side collage
+w, h = orig.size
+card = Image.new("RGB", (w * 2, h))
+card.paste(orig, (0, 0))
+card.paste(red, (w, 0))
+
+card.show()
 
 
 def extract_end_bits(num_end_bits, pixel):
@@ -111,7 +159,7 @@ def extract_end_bits(num_end_bits, pixel):
         num_end_bits = 5
         pixel = 214
 
-        214 in binary is 11010110. 
+        214 in binary is 11010110.
         The last 5 bits of 11010110 are 10110.
                               ^^^^^
         The integer representation of 10110 is 22, so we return 22.
@@ -138,7 +186,7 @@ def extract_end_bits(num_end_bits, pixel):
 
 def reveal_bw_image(filename):
     """
-    Extracts the single LSB for each pixel in the BW input image. 
+    Extracts the single LSB for each pixel in the BW input image.
     Inputs:
         filename: string, input BW file to be processed
     Returns:
@@ -149,7 +197,7 @@ def reveal_bw_image(filename):
 
 def reveal_color_image(filename):
     """
-    Extracts the 3 LSBs for each pixel in the RGB input image. 
+    Extracts the 3 LSBs for each pixel in the RGB input image.
     Inputs:
         filename: string, input RGB file to be processed
     Returns:
@@ -160,7 +208,7 @@ def reveal_color_image(filename):
 
 def reveal_image(filename):
     """
-    Extracts the single LSB (for a BW image) or the 3 LSBs (for a 
+    Extracts the single LSB (for a BW image) or the 3 LSBs (for a
     color image) for each pixel in the input image. Hint: you can
     use a function to determine the mode of the input image (BW or
     RGB) and then use this mode to determine how to process the image.
@@ -170,10 +218,10 @@ def reveal_image(filename):
         result: an Image object containing the hidden image
     """
     im = Image.open(filename)
-    if im.mode == '1' or im.mode == 'L':
-        return(reveal_bw_image(filename))
-    elif im.mode == 'RGB':
-        return(reveal_color_image(filename))
+    if im.mode == "1" or im.mode == "L":
+        return reveal_bw_image(filename)
+    elif im.mode == "RGB":
+        return reveal_color_image(filename)
     else:
         raise Exception("Invalid mode %s" % im.mode)
 
@@ -202,25 +250,25 @@ def main():
 
     # Uncomment the following lines to test part 1
 
-    #im = Image.open('image_15.png')
-    #width, height = im.size
-    #pixels = img_to_pix('image_15.png')
+    # im = Image.open('image_15.png')
+    # width, height = im.size
+    # pixels = img_to_pix('image_15.png')
 
-    #non_filtered_pixels = filter(pixels,'none')
-    #im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
+    # non_filtered_pixels = filter(pixels,'none')
+    # im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
     # im.show()
 
-    #red_filtered_pixels = filter(pixels,'red')
-    #im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
+    # red_filtered_pixels = filter(pixels,'red')
+    # im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
     # im2.show()
 
     # Uncomment the following lines to test part 2
-    #im = reveal_image('hidden1.bmp')
+    # im = reveal_image('hidden1.bmp')
     # im.show()
 
-    #im2 = reveal_image('hidden2.bmp')
+    # im2 = reveal_image('hidden2.bmp')
     # im2.show()
-    
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
